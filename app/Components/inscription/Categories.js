@@ -2,35 +2,27 @@ import React from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity, TextInput} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Colors from "../../theme/Colors";
+import Images from "../../theme/Images";
 
-export default class NameForm extends React.Component {
+
+export default class Categories extends React.Component {
 
 
-   renderError =(x)=>{
-       if (x)
-       return (<Text style={styles.texterreur}>{x}</Text>)
-   }
+
     render() {
         return (
 
             <View style={{flex: 1, flexDirection: 'column'}}>
                 <View style={styles.searchSection}>
-                    <Icon style={styles.searchIcon} name="user-o" size={25} color="#FFF"/>
-                    <TextInput
-                        value={this.props.value}
+                    <Image style={styles.searchIcon} source={Images.tool}/>
+                    <Text
                         style={styles.input}
-                        placeholder="Nom"
-                        autoCapitalize={'words'}
-                        keyboardType={''}
-                        maxLength={32}
-                        placeholderTextColor={'#FFF'}
-                        tintColor={'#FFF'}
-                        onChangeText={name => this.props.changeText(name)}
                         underlineColorAndroid="transparent"
-                    />
+                    > Catégorie {this.props.categories.length}</Text>
+                       <Image style={styles.searchIcon} source={Images.addCat}/>
                 </View>
                 <View style={{height: 2, backgroundColor: '#FFF'}}/>
-                {this.renderError(this.props.error)}
+
             </View>
         )
     }
@@ -40,7 +32,7 @@ const styles = StyleSheet.create({
     searchSection: {
         width: 280,
         height: 100,
-        alignSelf:'flex-start',
+        alignSelf: 'flex-start',
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'flex-end',
@@ -60,13 +52,17 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontFamily: 'futura medium bt'
     },
-    texterreur: {
+    textexpl: {
         textAlign: 'left',
         fontSize: 12,
-        color: Colors.red,
+        color: Colors.white,
         fontFamily: 'Futura Book font',
         alignSelf: 'flex-start',
-        flexDirection:'column',
+        flexDirection: 'column',
+        marginBottom: 20
+    },
+    errorIcon:{
 
+        marginBottom: 9
     }
 });

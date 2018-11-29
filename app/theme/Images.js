@@ -16,6 +16,21 @@ const images = {
         suivant:require('../../assets/signupform/suivant.png'),
     oval :require('../../assets/signupform/oval.png'),
     ovalWhite :require('../../assets/signupform/ovalWhite.png'),
+    errorTel:require('../../assets/signupform/errorNum.png'),
+    addCat:require('../../assets/signupform/addCat.png'),
+    tool:require('../../assets/signupform/tool.png'),
+    categories:[
+        {
+          name:'peinture',
+          source:require('../../assets/Categories/peinture.png'),
+
+        },
+        {
+          name:'peinture',
+          source:require('../../assets/Categories/peinture.png'),
+        }
+    ]
+
 }
 
 export default images

@@ -1,30 +1,27 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity, TextInput} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/Feather';
 import Colors from "../../theme/Colors";
 
-export default class NameForm extends React.Component {
+export default class PreNomForm extends React.Component {
 
 
    renderError =(x)=>{
        if (x)
-       return (<Text style={styles.texterreur}>{x}</Text>)
+     return (<Text style={styles.texterreur}>{x}</Text>)
    }
     render() {
         return (
 
             <View style={{flex: 1, flexDirection: 'column'}}>
                 <View style={styles.searchSection}>
-                    <Icon style={styles.searchIcon} name="user-o" size={25} color="#FFF"/>
+                    <Icon style={styles.searchIcon} name="users" size={25} color="#FFF"/>
                     <TextInput
-                        value={this.props.value}
                         style={styles.input}
-                        placeholder="Nom"
-                        autoCapitalize={'words'}
-                        keyboardType={''}
-                        maxLength={32}
+                        placeholder="Prénom"
                         placeholderTextColor={'#FFF'}
                         tintColor={'#FFF'}
+                        maxLength={36}
                         onChangeText={name => this.props.changeText(name)}
                         underlineColorAndroid="transparent"
                     />
