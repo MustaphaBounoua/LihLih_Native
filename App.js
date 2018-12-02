@@ -8,15 +8,17 @@
 
 import React, {Component} from 'react';
 import { StyleSheet} from 'react-native';
-
+import {store} from './app/redux/store/UserStore';
 import PrimaryNav from "./app/screens/primaryNav";
-
+import { Provider, connect } from 'react-redux';
 
 type Props = {};
 export default class App extends Component<Props> {
     render() {
        return (
+        <Provider store={store}>
          <PrimaryNav/>
+         </Provider>
        );
      }
 

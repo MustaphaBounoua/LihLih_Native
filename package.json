@@ -4,13 +4,17 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "start-android": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && react-native run-android"
   },
   "dependencies": {
+    "@types/react-redux": "^6.0.10",
+    "axios": "^0.18.0",
     "native-base": "^2.8.1",
     "react": "16.6.0-alpha.8af6728",
     "react-native": "0.57.4",
     "react-native-indicator": "^0.7.0",
+    "react-native-phone-input": "^0.2.1",
     "react-native-spinkit": "^1.1.1",
     "react-native-step-indicator": "0.0.9",
     "react-native-textinput-effects": "^0.4.2",
@@ -18,7 +22,12 @@
     "react-navigation": "^2.18.0",
     "react-navigation-fluid-transitions": "^0.2.73",
     "react-navigation-transitions": "^1.0.5",
-    "rn-viewpager": "^1.2.9"
+    "react-redux": "^5.1.1",
+    "redux": "^4.0.1",
+    "redux-axios-middleware": "^4.0.0",
+    "redux-thunk": "^2.3.0",
+    "rn-viewpager": "^1.2.9",
+    "validate.js": "^0.12.0"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",

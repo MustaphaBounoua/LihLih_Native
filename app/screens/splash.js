@@ -8,6 +8,15 @@ var Spinner = require('react-native-spinkit');
 
 export default class Splash extends React.Component {
 
+    
+
+     loadApp(){
+            alert("Going home")
+            setTimeout(()=>{
+                    this.props.navigation.navigate('Home');
+            },
+            6000)
+    }   
     static navigationOptions = {
         header: null,
     };
@@ -17,8 +26,13 @@ export default class Splash extends React.Component {
         color: "#FFFFFF",
         isVisible: true
     }
+   
+    componentDidMount() {
 
+       this.loadApp();
+    }
     render() {
+
         return (
 
             <Grid style={styles.container}>

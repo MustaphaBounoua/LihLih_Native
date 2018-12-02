@@ -16,6 +16,8 @@ const images = {
         suivant:require('../../assets/signupform/suivant.png'),
     oval :require('../../assets/signupform/oval.png'),
     ovalWhite :require('../../assets/signupform/ovalWhite.png'),
-}
+    phonevalid: require('../../assets/signupform/phonevalid.png'),
+        
+}   
 
 export default images
