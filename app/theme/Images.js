@@ -16,9 +16,28 @@ const images = {
         suivant:require('../../assets/signupform/suivant.png'),
     oval :require('../../assets/signupform/oval.png'),
     ovalWhite :require('../../assets/signupform/ovalWhite.png'),
+<<<<<<< HEAD
     phonevalid: require('../../assets/signupform/phonevalid.png'),
     peinture:require('../../assets/categories/peinture.png')
         
 }   
+=======
+    errorTel:require('../../assets/signupform/errorNum.png'),
+    addCat:require('../../assets/signupform/addCat.png'),
+    tool:require('../../assets/signupform/tool.png'),
+    categories:[
+        {
+          name:'peinture',
+          source:require('../../assets/Categories/peinture.png'),
+
+        },
+        {
+          name:'peinture',
+          source:require('../../assets/Categories/peinture.png'),
+        }
+    ]
+
+}
+>>>>>>> 6071cfa8be16f8aff3f598f31f4bd22d954f3e00
 
 export default images

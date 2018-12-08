@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import {Dimensions,StyleSheet, Text, View, Image, TouchableOpacity, TextInput} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Colors from "../../theme/Colors";
@@ -25,6 +26,18 @@ export default class Categories extends React.Component {
             this.setState({isModalVisible:false})
     },6000)
         }
+=======
+import {StyleSheet, Text, View, Image, TouchableOpacity, TextInput} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import Colors from "../../theme/Colors";
+import Images from "../../theme/Images";
+
+
+export default class Categories extends React.Component {
+
+
+
+>>>>>>> 6071cfa8be16f8aff3f598f31f4bd22d954f3e00
     render() {
         return (
 
@@ -35,6 +48,7 @@ export default class Categories extends React.Component {
                         style={styles.input}
                         underlineColorAndroid="transparent"
                     > Catégorie {this.props.categories.length}</Text>
+<<<<<<< HEAD
                     <TouchableOpacity
                         onPress={this._toggleModal}
                     >
@@ -46,6 +60,12 @@ export default class Categories extends React.Component {
                
                 <View style={{height: 2, backgroundColor: '#FFF'}}/>
                 { this.state.isModalVisible &&                     <GridCategorie></GridCategorie>  }
+=======
+                       <Image style={styles.searchIcon} source={Images.addCat}/>
+                </View>
+                <View style={{height: 2, backgroundColor: '#FFF'}}/>
+
+>>>>>>> 6071cfa8be16f8aff3f598f31f4bd22d954f3e00
             </View>
         )
     }

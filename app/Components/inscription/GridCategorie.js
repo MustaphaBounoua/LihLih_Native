@@ -1,9 +1,15 @@
 import React from 'react';
+<<<<<<< HEAD
 import {StyleSheet, Text, View, Image} from 'react-native';
+=======
+import {StyleSheet, Text, View, Image, TouchableOpacity, TextInput} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+>>>>>>> 6071cfa8be16f8aff3f598f31f4bd22d954f3e00
 import Colors from "../../theme/Colors";
 import Images from "../../theme/Images";
 import SuperGridView from 'react-native-super-grid';
 import CategoryIcon from "./CategoryIcon";
+<<<<<<< HEAD
 import ModalBox from "react-native-modalbox";
 import MyButton from "../../Components/MyButton";
 export default class GridCategorie extends React.Component {
@@ -89,3 +95,25 @@ const styles=StyleSheet.create({
         borderColor: '#fff'
       },
 })
+=======
+
+export default class GridCategorie extends React.Component {
+
+
+    render() {
+        return (
+
+
+                <SuperGridView
+                    itemDimension={82}
+                    spacing={22}
+                    items={[1, 2, 3, 4, 5, 6]}
+                    renderItem={item => (<CategoryIcon/>)}
+                />
+
+        )
+    }
+}
+
+const styles = StyleSheet.create({})
+>>>>>>> 6071cfa8be16f8aff3f598f31f4bd22d954f3e00

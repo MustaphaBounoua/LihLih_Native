@@ -3,6 +3,7 @@ import {StyleSheet, Text, View, Image, TouchableOpacity, TextInput} from 'react-
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Colors from "../../theme/Colors";
 import Images from "../../theme/Images";
+<<<<<<< HEAD
 import SmsListener from 'react-native-android-sms-listener';
 import Modal from 'react-native-modal'
 import { Spinner } from 'native-base';
@@ -45,24 +46,37 @@ import   {handleInput} from '../../redux/actions/formActions'
         this.subscription.remove()
 
     }
+=======
+
+
+export default class CodeVerif extends React.Component {
+
+>>>>>>> 6071cfa8be16f8aff3f598f31f4bd22d954f3e00
 
 
     render() {
         return (
 
             <View style={{flex: 1, flexDirection: 'column'}}>
+<<<<<<< HEAD
                <Modal
                isVisible={this.props.loading} >
                <Spinner
                 size={80} type={'Circle'}
                 color={Colors.white}/>
                    </Modal>
+=======
+>>>>>>> 6071cfa8be16f8aff3f598f31f4bd22d954f3e00
                 <View style={styles.searchSection}>
                     <Icon style={styles.searchIcon} name="unlock" size={25} color="#FFF"/>
                     <Text
                         style={styles.input}
                         underlineColorAndroid="transparent"
+<<<<<<< HEAD
                     >{this.state.code}</Text>
+=======
+                    >{this.props.code}</Text>
+>>>>>>> 6071cfa8be16f8aff3f598f31f4bd22d954f3e00
                    <Icon style={styles.searchIcon} name="phone" size={25} color="#FFF"/>
                 </View>
                 <View style={{height: 2, backgroundColor: '#FFF'}}/>
@@ -109,6 +123,7 @@ const styles = StyleSheet.create({
 
         marginBottom: 9
     }
+<<<<<<< HEAD
 });
 function mapStateToProps(state){
     return {
@@ -123,3 +138,6 @@ const mapDispatchToProps = (dispatch) => {
     }
   }
 export default connect(mapStateToProps,mapDispatchToProps)(CodeVerif)
+=======
+});
+>>>>>>> 6071cfa8be16f8aff3f598f31f4bd22d954f3e00

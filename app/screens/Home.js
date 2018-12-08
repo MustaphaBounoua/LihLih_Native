@@ -81,8 +81,6 @@ export default class Home extends React.Component {
                                     style={[{marginRight: 30, marginLeft: 3}]}
                                     source={Images.lihlihBlue}
                                 />
-
-
                             </MyButton>
                         </Row>
 

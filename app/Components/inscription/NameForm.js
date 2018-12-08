@@ -22,11 +22,23 @@ import { handleInput,validateInput } from '../../redux/actions/formActions';
                     <Icon style={styles.searchIcon} name={this.props.icon} size={25} color="#FFF"/>
 
                     <TextInput
+<<<<<<< HEAD
                   
                         style={styles.input}
                         placeholder={this.props.inputName}
                         placeholderTextColor={'#FFF'}
                         onChangeText={this.changeText}
+=======
+                        value={this.props.value}
+                        style={styles.input}
+                        placeholder="Nom"
+                        autoCapitalize={'words'}
+                        keyboardType={''}
+                        maxLength={32}
+                        placeholderTextColor={'#FFF'}
+                        tintColor={'#FFF'}
+                        onChangeText={name => this.props.changeText(name)}
+>>>>>>> 6071cfa8be16f8aff3f598f31f4bd22d954f3e00
                         underlineColorAndroid="transparent"
                         keyboardType={this.props.keyboardType} max-length={this.props.maxLength}
 
