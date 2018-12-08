@@ -17,6 +17,7 @@ const images = {
     oval :require('../../assets/signupform/oval.png'),
     ovalWhite :require('../../assets/signupform/ovalWhite.png'),
     phonevalid: require('../../assets/signupform/phonevalid.png'),
+    peinture:require('../../assets/categories/peinture.png')
         
 }   
 

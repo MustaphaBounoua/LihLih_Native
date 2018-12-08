@@ -4,7 +4,7 @@ import axios from 'axios';
 import thunk from 'redux-thunk';
 import reducers from '../reducers'
 const client = axios.create({
-    baseURL: 'http://localhost:3000',
+    baseURL: 'http://www.google.com',
     responseType: 'json'
   });
 

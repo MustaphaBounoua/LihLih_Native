@@ -2,7 +2,9 @@ import React from 'react';
 import {connect} from "react-redux";
 import {
     StyleSheet,
-    Text,
+    Text,BackHandler,
+    Animated,
+    Easing,
     View,
     Image,
     ImageBackground,
@@ -12,17 +14,22 @@ import {
 import { Grid, Row} from 'native-base';
 import Colors from "../theme/Colors"
 import Images from "../theme/Images"
-
+import axios from "axios";
+import  { Transition } from 'react-navigation-fluid-transitions'
 
 import NameForm from "../Components/inscription/NameForm";
 import MyButton from "../Components/MyButton";
 import OvalWhite from "../Components/inscription/ovalWhite";
 
 
-import { nextInput } from '../redux/actions/formActions';
+import { nextInput, previousInput } from '../redux/actions/formActions';
+import Categories from '../Components/inscription/Categories';
+import CodeVerif from '../Components/inscription/CodeVerif';
 
  class FormsSignUp extends React.Component {
+        
     constructor(props) {
+
         super(props);
         this.state = {
             keybaord: true,
@@ -33,26 +40,28 @@ import { nextInput } from '../redux/actions/formActions';
         switch(position){
             case 0:
                 return (<NameForm inputName="Nom" keyboardType="default" maxLength="20" minLength="3" storeKey="firstname" icon="user-o" />)
-            case 1: 
-                return (<NameForm inputName="Prénom " keyboardType="default" maxLength="20" minLength="3" storeKey="lastname" icon="user-o"/>)
+            case 1:
+                return (<NameForm inputName="Prénom " keyboardType="default" maxLength="20" minLength="3" storeKey="lastname" icon="user-friends"/>)
             case 2:
                 return (<NameForm inputName="Tél"  keyboardType="numeric" maxLength="10" minLength="3" storeKey="phonenumber" icon="phone" />)
                 /***
                  * todo
                  *  add number phone input  *** Completed
-                 * and validation tokeen input 
+                 * and validation tokeen input
                  */
-            case 3: 
+            case 3:
             return (<NameForm inputName="Tél"  keyboardType="numeric" maxLength="10" minLength="3" storeKey="phonenumber" icon="unlock" />)
-            
+            case 4:
+                return (<Transition appear="horizontal"><CodeVerif></CodeVerif></Transition>)
             case 5:
-                alert("fin d'instruction ")
-                
+
+                return (<Categories categories={[1,2,3]}></Categories>)
+
 
         }
     }
     nextInput=()=>{
-        
+
     }
     componentWillMount() {
         this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', () => {
@@ -61,16 +70,34 @@ import { nextInput } from '../redux/actions/formActions';
         this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', () => {
             this.setState({keybaord: true})
         });
-    }
+      
 
+
+    }
+    componentDidMount(){
+        BackHandler.addEventListener('hardwareBackPress', this.handleBack);
+
+    }
+    handleBack=() =>{
+       
+        if(this.props.user.currentposition>0){
+            this.props.precedent(this.props.user.currentposition)
+            return true;
+        }
+
+          return true;   
+
+}
     componentWillUnmount() {
         this.keyboardDidShowListener.remove();
         this.keyboardDidHideListener.remove();
     }
     renderOvalList= () =>{
-        if(this.state.keybaord) return (<OvalWhite current={this.state.currentposition} />)
+        if(this.state.keybaord) return (<OvalWhite current={this.props.user.currentposition} />)
     }
     renderButton = () => {
+        console.warn(this.props.suivant)
+
         if (this.state.keybaord) return (<MyButton color={Colors.white}
                                                    background={Colors.white}
                                                    onpress={() => {
@@ -114,16 +141,18 @@ import { nextInput } from '../redux/actions/formActions';
 
                     </ImageBackground>
                     </Row>
+
                     <Row size={344}  >
                         <View style={{
                             flex: 1, flexDirection: 'column',
                             justifyContent: 'center',
                             alignItems: 'center',
                         }}>
+                            
                             <View style={{flex: 0.1, marginTop: 30}}><Text style={styles.textstyle}>Veuillez remplir le
                                 champ
                                 suivant: </Text></View>
-                                
+                               
                                 {this.renderInput(this.props.user.currentposition)}
                             <View style={{marginTop: 30, marginLeft: 42, marginRight: 42, flex: 1}}>
                                 {this.renderButton()}
@@ -186,8 +215,12 @@ function mapStateToProps(state){
 const mapDispatchToProps = (dispatch) => {
     return {
       suivant: (position,key,value) => {
-        dispatch(nextInput(position,key,value))
+        dispatch(nextInput(position,key,value)) 
+      },
+      precedent:(position)=>{
+          dispatch(previousInput(position))
       }
     }
   }
+
 export default connect(mapStateToProps,mapDispatchToProps)(FormsSignUp)

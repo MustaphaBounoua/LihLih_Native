@@ -6,6 +6,7 @@ import FormsSignUp from "./FormsSignUp";
 import Inscription from "./Inscription";
 import Customer from "./Customer";
 import { flipY} from 'react-navigation-transitions';
+import SignUpNav from './SignUpNav';
 
 const handleCustomTransition = ({scenes}) => {
  const prevScene = scenes[scenes.length - 2],
@@ -26,7 +27,9 @@ const PrimaryNav = createStackNavigator({
     Professionel: {screen: Professionel},
     Customer: {screen: Customer},
     FormsSignUp: {screen: FormsSignUp},
-    Inscription: {screen: Inscription}
+    Inscription: {screen: Inscription},
+    SignUpNav: {screen:SignUpNav}
+    
 }, {
     // Default config for all screens
     initialRouteName: 'FormsSignUp',

@@ -1,34 +1,43 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity, TextInput} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon3 from 'react-native-vector-icons/FontAwesome5Pro';
 import Colors from "../../theme/Colors";
 import  { connect } from 'react-redux'
-import { handleInput } from '../../redux/actions/formActions';
+import { handleInput,validateInput } from '../../redux/actions/formActions';
 
- class LastName extends React.Component {
-
-    changeText=(text)=>{
-        this.props.suivant("lastname",text)
-   }
+ class VertificationInput extends React.Component {
+     changeText=(text)=>{
+         this.props.suivant(this.props.storeKey,text);
+         this.props.verifierInput(this.props.storeKey,text)
+    }
+  
    renderError =(x)=>{
        if (x)
-       return (<Text style={styles.texterreur}>Erreur</Text>)
+       return (<Text style={styles.texterreur}>{x}</Text>)
    }
     render() {
         return (
             <View style={{flex: 1, flexDirection: 'column'}}>
                 <View style={styles.searchSection}>
-                    <Icon style={styles.searchIcon} name="user-o" size={25} color="#FFF"/>
+                    <Icon style={styles.searchIcon} name={this.props.icon} size={25} color="#FFF"/>
+
                     <TextInput
+                  
                         style={styles.input}
                         placeholder={this.props.inputName}
                         placeholderTextColor={'#FFF'}
                         onChangeText={this.changeText}
                         underlineColorAndroid="transparent"
+                        keyboardType={this.props.keyboardType} max-length={this.props.maxLength}
+
                     />
+            { ( this.props.user.errormessage===null && this.props.user.phonenumber!="" &&  this.props.user.currentposition==2) &&  <Icon style={styles.searchIcon} name="check-circle-o" size={25} color="#0F0"/> }
+            { ( this.props.user.errormessage!=null && this.props.user.phonenumber!="" &&  this.props.user.currentposition==2) &&  <Icon style={styles.searchIcon} name="times-circle-o" size={25} color="#F00"/> }
+            
                 </View>
                 <View style={{height: 2, backgroundColor: '#FFF'}}/>
-                {this.renderError(this.props.error)}
+                {this.renderError(this.props.user.errormessage)}
             </View>
         )
     }
@@ -76,9 +85,12 @@ function mapStateToProps(state){
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-      suivant: (value) => {
-          dispatch(handleInput("lastname",value))
+      suivant: (key,value) => {
+        dispatch(handleInput(key,value))
+      },
+      verifierInput:(key,value)=>{
+          dispatch(validateInput(key,value))
       }
     }
   }
-export default connect(mapStateToProps,mapDispatchToProps)(LastName)
+export default connect(mapStateToProps,mapDispatchToProps)(verifierInput)

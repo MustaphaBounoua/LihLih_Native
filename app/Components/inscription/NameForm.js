@@ -1,7 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity, TextInput} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import Icon3 from 'react-native-vector-icons/FontAwesome5Pro';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import Colors from "../../theme/Colors";
 import  { connect } from 'react-redux'
 import { handleInput,validateInput } from '../../redux/actions/formActions';
